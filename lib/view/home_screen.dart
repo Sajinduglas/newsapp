@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newsapp/contoller/home_screen_conntoller.dart';
+import 'package:newsapp/view/utils/colors/mycolors.dart';
 import 'package:newsapp/view/widget/news_card.dart';
 import 'package:provider/provider.dart';
 
@@ -26,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeScreenController provider = Provider.of<HomeScreenController>(context);
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blueGrey,
+          backgroundColor:MyColors.bgColor,
           title: Text("Daily report"),
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
         ),

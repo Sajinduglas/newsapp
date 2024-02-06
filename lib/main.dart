@@ -20,10 +20,11 @@ class MyApp extends StatelessWidget {
     return MultiProvider(providers: [
       ChangeNotifierProvider(create: (context) => HomeScreenController()),
       ChangeNotifierProvider(create: (context) => SearchScreenController()),
-      ChangeNotifierProvider(create: (context) => BottomNavigationContoller()),
+      ChangeNotifierProvider(create: (context) => BottomNavigationController()),
       ChangeNotifierProvider(create: (context) => CategoryController()),
     ],
       child: MaterialApp(
+        theme:  ThemeData(),
         debugShowCheckedModeBanner: false,
         home: MainPage(),
       ),

@@ -4,34 +4,34 @@ import 'package:provider/provider.dart';
 
 import '../contoller/catogory_controller.dart';
 
-class CatagoryScreen extends StatelessWidget {
-  const CatagoryScreen({super.key});
+class CategoryScreen extends StatelessWidget {
+  const CategoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    CategoryController categoryprovider =
+    CategoryController provider =
         Provider.of<CategoryController>(context);
     return DefaultTabController(
-        length: categoryprovider.catagoryList.length,
+        length: provider.catagoryList.length,
         child: Scaffold(
           appBar: AppBar(
             title: Text("Categories"),
             bottom: TabBar(
               isScrollable: true,
               tabs: List.generate(
-                categoryprovider.catagoryList.length,
+                provider.catagoryList.length,
                 (index) => Tab(
-                  text: categoryprovider.catagoryList[index],
+                  text: provider.catagoryList[index],
                 ),
               ),
               onTap: (value) {
-                categoryprovider.onTap(index: value);
+                provider.onTap(index: value);
               },
             ),
           ),
           body: Consumer<CategoryController>(
               builder: (context, CategoryController, child) =>
-                  categoryprovider.isloading == true
+                  provider.isloading == true
                       ? Center(child: CircularProgressIndicator())
                       : Padding(
                           padding: EdgeInsets.all(10),
@@ -41,25 +41,25 @@ class CatagoryScreen extends StatelessWidget {
                                             .newsModel.articles?[index].title
                                             .toString() ??
                                         "",
-                                    description: categoryprovider.newsModel
+                                    description: CategoryController.newsModel
                                             .articles?[index].description
                                             .toString() ??
                                         "",
-                                    date: categoryprovider
+                                    date: CategoryController
                                         .newsModel.articles?[index].publishedAt,
-                                    imageUrl: categoryprovider.newsModel
+                                    imageUrl: CategoryController.newsModel
                                             .articles?[index].urlToImage
                                             .toString() ??
                                         "",
-                                    contant: categoryprovider
+                                    contant: CategoryController
                                             .newsModel.articles?[index].content
                                             .toString() ??
                                         "",
-                                    sourceName: categoryprovider
+                                    sourceName: CategoryController
                                             .newsModel.articles?[index].source
                                             .toString() ??
                                         "",
-                                    url: categoryprovider
+                                    url: CategoryController
                                             .newsModel.articles?[index].content
                                             .toString() ??
                                         "",
@@ -67,7 +67,7 @@ class CatagoryScreen extends StatelessWidget {
                               separatorBuilder: (context, index) =>
                                   Divider(height: 20),
                               itemCount:
-                                  categoryprovider.newsModel.articles?.length ??
+                              CategoryController.newsModel.articles?.length ??
                                       0),
                         )),
         ));

@@ -4,13 +4,11 @@ import '../view/catagory_screen.dart';
 import '../view/home_screen.dart';
 import '../view/search_screen.dart';
 
-class BottomNavigationContoller extends ChangeNotifier{
-  int selectedindex =0;
-
-  void OnItemTap(index){
-    selectedindex=index;
-    notifyListeners();
-  }
-
-  List<Widget>mypages=[HomeScreen(),CatagoryScreen(),SearchScreen()];
+class BottomNavigationController extends ChangeNotifier{
+ int selectedIndex=0;
+ List<Widget>myPages=[ HomeScreen(),CategoryScreen(),SearchScreen()];
+ void onTap(index){
+   selectedIndex=index;
+   notifyListeners();
+ }
 }
