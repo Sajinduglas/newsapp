@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:newsapp/view/utils/colors/mycolors.dart';
 
 import 'package:provider/provider.dart';
 
-import '../../contoller/home_screen_conntoller.dart';
+import '../../controller/home_screen_controller.dart';
+import 'news_detail_widget.dart';
 
 class NewsCard extends StatelessWidget {
   const NewsCard(
@@ -50,19 +52,19 @@ class NewsCard extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //       builder: (context) => NewsViewScreen(
-              //         title: title,
-              //         description: description,
-              //         imageUrl: imageUrl,
-              //         date: date,
-              //         contant: contant,
-              //         sourceName: sourceName,
-              //         url: url,
-              //       ),
-              //     ));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NewsViewScreen(
+                      title: title,
+                      description: description,
+                      imageUrl: imageUrl,
+                      date: date,
+                      contant: contant,
+                      sourceName: sourceName,
+                      url: url,
+                    ),
+                  ));
             },
             child: Column(
               children: [
@@ -83,7 +85,7 @@ class NewsCard extends StatelessWidget {
                               listen: false)
                               .shareText(textToShare: newsToShare);
                         },
-                        icon: const Icon(Icons.share))
+                        icon:  Icon(Icons.share,color:  MyColors.bgColor,))
                   ],
                 )
               ],

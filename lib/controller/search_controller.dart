@@ -13,6 +13,8 @@ class SearchScreenController extends ChangeNotifier {
     notifyListeners();
     final url = Uri.parse(
         "https://newsapi.org/v2/everything?q=$searchText&sortBy=popularity&apiKey=a9558543587d4e379111c841647fd86c");
+    // final url = Uri.parse(
+    //     "https://newsapi.org/v2/everything?q=$searchText&apiKey=a9558543587d4e379111c841647fd86c");
     try {
       final response = await http.get(url, headers: {
         'Content-Type': 'application/json',

@@ -2,28 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:newsapp/view/utils/colors/mycolors.dart';
 import 'package:provider/provider.dart';
 
-import '../contoller/bottom_navigation_controller.dart';
+import '../controller/bottom_navigation_controller.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     var mainProvider = Provider.of<BottomNavigationController>(context);
     return Scaffold(
       body: mainProvider.myPages[mainProvider.selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-       unselectedItemColor: MyColors.bgColor,
+        backgroundColor: MyColors.sideColor,
+          unselectedItemColor: MyColors.bgColor,
           selectedItemColor: MyColors.blackColor,
           showUnselectedLabels: false,
-elevation: 0,
-
-          onTap: mainProvider.onTap,
+          elevation: 0,
+          //onTap: mainProvider.onTap,
+          onTap: (index) {
+            Provider.of<BottomNavigationController>(context, listen: false).onTap(index,context);
+          },
           currentIndex: mainProvider.selectedIndex,
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(icon: Icon(Icons.category), label: "Home"),
+            BottomNavigationBarItem(icon: Icon(Icons.category), label: "Category"),
             BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search")
           ]),
     );

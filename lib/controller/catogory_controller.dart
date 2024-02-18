@@ -5,7 +5,7 @@ import 'package:newsapp/model/newsmodel.dart';
 import 'package:http/http.dart' as http;
 
 class CategoryController extends ChangeNotifier {
-  List<String> catagoryList = [
+  List<String> categoryList = [
     "Business",
     "Entertainment",
     "General",
@@ -16,15 +16,15 @@ class CategoryController extends ChangeNotifier {
   ];
   String category = "Business";
 
+  late NewsModel newsModel;
+  bool isloading = false;
+
   onTap({required int index}) {
-    category = catagoryList[index].toLowerCase();
+    category = categoryList[index].toLowerCase();
     fetchData();
     print(category);
     notifyListeners();
   }
-
-  late NewsModel newsModel;
-  bool isloading = false;
 
   void fetchData() async {
     isloading = false;
